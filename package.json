@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:christopherdro/react-native-calendar.git"
+    "url": "git@github.com:sbhkin/react-native-calendar.git"
   },
   "scripts": {
     "eslint": "eslint ."

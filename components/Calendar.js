@@ -99,6 +99,16 @@ export default class Calendar extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.selectedDate != this.props.selectedDate) {
+      return true
+    }
+    if(nextProps.currentMonth !== this.props.currentMonth){
+      return true
+    }
+    return false
+  }
+
   getStack(currentMoment) {
     if (this.props.scrollEnabled) {
       let i = -VIEW_INDEX;

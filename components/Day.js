@@ -65,6 +65,13 @@ export default class Day extends Component {
     return dayTextStyle;
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.isSelected != this.props.isSelected) {
+      return true
+    }
+    return false
+  }
+
   render() {
     let { caption, customStyle } = this.props;
     const {
