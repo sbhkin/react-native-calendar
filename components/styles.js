@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 15,
     textAlign: 'center',
-    marginVertical: 5,
+    marginVertical: 8,
   },
   weekendHeading: {
     flex: 1,
@@ -53,21 +53,27 @@ const styles = StyleSheet.create({
   },
   weekendDayButton: {
   },
+  expandedDayCircle: {
+    width: (DEVICE_WIDTH)/7,
+    height: 80,
+    borderRadius:5,
+    justifyContent:'flex-start',
+    paddingTop:6,
+  },
   dayButton: {
     alignItems: 'center',
-    padding: 5,
+    padding: 0,
     width: (DEVICE_WIDTH) / 7,
     borderTopWidth: 0,
     borderTopColor: '#e9e9e9',
   },
   dayButtonFiller: {
-    padding: 5,
+    padding: 8,
     width: (DEVICE_WIDTH) / 7,
   },
   day: {
     color: '#4d4d4d',
     fontSize: 16,
-    alignSelf: 'center',
   },
   eventIndicatorFiller: {
     marginTop: 3,

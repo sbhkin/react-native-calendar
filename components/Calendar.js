@@ -242,7 +242,32 @@ export default class Calendar extends Component {
     offset = calFormat === 'monthly' ?
       (startOfArgMoment.isoWeekday() - weekStart + 7) % 7: 0,
     selectedIndex = moment(selectedMoment).date() - 1;
+    var selectedWeekRow = -1;
+    var weekIdx = 0;
     var hasSelectedDay = false;
+    var i = 0;
+    do {
+      const dayIndex = i - offset;
+      const thisMoment = moment(startOfArgMoment).add(dayIndex, 'day');
+      if (dayIndex >= 0 && dayIndex < argDaysCount) {
+        if(selectedMoment.isSame(thisMoment)) {
+          hasSelectedDay = true;
+        }
+      }
+      if (i % 7 === 6) {
+        if(hasSelectedDay){
+          selectedWeekRow = weekIdx;
+        }
+        hasSelectedDay = false;
+        weekIdx ++;
+      }
+      if (dayIndex + 1 >= argDaysCount) {
+        break;
+      }
+      i++;
+    }while(true)
+
+
 
     do {
       const dayIndex = renderIndex - offset;
@@ -253,6 +278,7 @@ export default class Calendar extends Component {
 
         days.push((
           <Day
+             isExpanded={weekRows.length == selectedWeekRow}
              startOfMonth={startOfArgMoment}
              isWeekend={isoWeekday === 0 || isoWeekday === 6}
              key={`${renderIndex}`}
@@ -273,7 +299,7 @@ export default class Calendar extends Component {
         days.push(<Day key={`${renderIndex}`} filler customStyle={this.props.customStyle} />);
       }
       if (renderIndex % 7 === 6) {
-        const isExpanded = hasSelectedDay;
+        const isExpanded = weekRows.length == selectedWeekRow;
         weekRows.push(
           <View
              key={weekRows.length}
