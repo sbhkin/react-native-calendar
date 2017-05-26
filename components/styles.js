@@ -4,7 +4,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   calendarContainer: {
-    backgroundColor: '#f7f7f7',
+    backgroundColor: '#ffffff',
   },
   monthContainer: {
     width: DEVICE_WIDTH,
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
   },
   calendarHeading: {
     flexDirection: 'row',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
   },
   dayHeading: {
     flex: 1,
@@ -47,21 +47,25 @@ const styles = StyleSheet.create({
   weekRow: {
     flexDirection: 'row',
   },
+  weekRowExpanded: {
+    height: 80,
+    backgroundColor: '#EEEEEE',
+  },
   weekendDayButton: {
-    backgroundColor: '#fafafa',
   },
   dayButton: {
     alignItems: 'center',
     padding: 5,
-    width: DEVICE_WIDTH / 7,
-    borderTopWidth: 1,
+    width: (DEVICE_WIDTH) / 7,
+    borderTopWidth: 0,
     borderTopColor: '#e9e9e9',
   },
   dayButtonFiller: {
     padding: 5,
-    width: DEVICE_WIDTH / 7,
+    width: (DEVICE_WIDTH) / 7,
   },
   day: {
+    color: '#4d4d4d',
     fontSize: 16,
     alignSelf: 'center',
   },
@@ -78,18 +82,20 @@ const styles = StyleSheet.create({
   dayCircleFiller: {
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
   },
   currentDayCircle: {
     backgroundColor: 'red',
   },
   currentDayText: {
-    color: 'red',
+    color: '#ff3e72',
   },
   selectedDayCircle: {
-    backgroundColor: 'black',
+    height:32,
+    width:32,
+    backgroundColor: '#cccccc',
   },
   hasEventCircle: {
   },
@@ -98,11 +104,10 @@ const styles = StyleSheet.create({
   hasEventText: {
   },
   selectedDayText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: '#4d4d4d',
   },
   weekendDayText: {
-    color: '#cccccc',
+    color: '#a0a0a0',
   },
 });
 

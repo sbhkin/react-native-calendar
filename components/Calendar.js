@@ -109,6 +109,7 @@ export default class Calendar extends Component {
     return false
   }
 
+
   getStack(currentMoment) {
     if (this.props.scrollEnabled) {
       let i = -VIEW_INDEX;
@@ -241,6 +242,7 @@ export default class Calendar extends Component {
     offset = calFormat === 'monthly' ?
       (startOfArgMoment.isoWeekday() - weekStart + 7) % 7: 0,
     selectedIndex = moment(selectedMoment).date() - 1;
+    var hasSelectedDay = false;
 
     do {
       const dayIndex = renderIndex - offset;
@@ -248,6 +250,7 @@ export default class Calendar extends Component {
       const thisMoment = moment(startOfArgMoment).add(dayIndex, 'day');
 
       if (dayIndex >= 0 && dayIndex < argDaysCount) {
+
         days.push((
           <Day
              startOfMonth={startOfArgMoment}
@@ -270,11 +273,12 @@ export default class Calendar extends Component {
         days.push(<Day key={`${renderIndex}`} filler customStyle={this.props.customStyle} />);
       }
       if (renderIndex % 7 === 6) {
+        const isExpanded = hasSelectedDay;
         weekRows.push(
           <View
              key={weekRows.length}
              onLayout={weekRows.length ? undefined : this.onWeekRowLayout}
-             style={[styles.weekRow, this.props.customStyle.weekRow]}
+             style={[styles.weekRow, this.props.customStyle.weekRow, isExpanded ? styles.weekRowExpanded : {}]}
              >
             {days}
           </View>);
@@ -282,6 +286,7 @@ export default class Calendar extends Component {
         if (dayIndex + 1 >= argDaysCount) {
           break;
         }
+        hasSelectedDay = false;
       }
       renderIndex += 1;
     } while (true)
