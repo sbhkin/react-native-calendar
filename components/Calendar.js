@@ -261,11 +261,19 @@ export default class Calendar extends Component {
         hasSelectedDay = false;
         weekIdx ++;
       }
+
+      // if(argDaysCount - dayIndex === 5) {
+      //   weekIdx++;
+      // }
       if (dayIndex + 1 >= argDaysCount) {
+        if(hasSelectedDay){
+          selectedWeekRow = weekIdx;
+        }
         break;
       }
       i++;
     }while(true)
+
 
 
 
@@ -299,7 +307,7 @@ export default class Calendar extends Component {
         days.push(<Day key={`${renderIndex}`} filler customStyle={this.props.customStyle} />);
       }
       if (renderIndex % 7 === 6) {
-        const isExpanded = weekRows.length == selectedWeekRow;
+        const isExpanded = weekRows.length === selectedWeekRow;
         weekRows.push(
           <View
              key={weekRows.length}
